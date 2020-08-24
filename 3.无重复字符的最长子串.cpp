@@ -42,23 +42,23 @@
 // @lc code=start
 #include<vector>
 #include<string>
-#include<math.h>
+#include<algorithm>
 
 using namespace std;
-
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
         vector<int>  dict(256,-1);
         int start_index=-1;
         int maxLength=0;
-
+        //"asadfsdf"
         for(int i=0;i<s.size();i++){
             if(dict[s[i]]>start_index){
-                maxLength=Math.max(maxLength,i-start_index);             
-            }else{
-                dict[s[i]]=i;
-            }    
+                start_index=dict[s[i]];          
+            }
+                
+            dict[s[i]]=i;
+            maxLength=max(maxLength,i-start_index);
         }
        
         return maxLength;
